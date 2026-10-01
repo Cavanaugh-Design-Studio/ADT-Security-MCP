@@ -1,0 +1,11 @@
+{
+    "chat.mcp.serverSampling": {
+        "adt-mcp-server/.vscode/mcp.json: adt-security": {
+            "allowedModels": [
+                "copilotcli/auto",
+                "copilot/auto",
+                "oaicopilot/deepseek-v4-pro::thinking"
+            ]
+        }
+    }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "adt-mcp-server",
+  "version": "1.1.0",
+  "type": "module",
+  "description": "Local MCP server and interactive MCP App for ADT Control security systems",
+  "license": "MIT",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
+  "bin": {
+    "adt-mcp-server": "dist/main.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "typecheck": "tsc --noEmit",
+    "build:app": "cross-env INPUT=mcp-app.html vite build",
+    "build:server": "tsx build-server.ts",
+    "build:types": "tsc -p tsconfig.server.json",
+    "build": "npm run clean && npm run typecheck && npm run build:app && npm run build:server && npm run build:types",
+    "serve": "tsx src/main.ts",
+    "serve:stdio": "tsx src/main.ts",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run build:app -- --watch\" \"tsx watch src/main.ts\"",
+    "start": "node dist/main.js",
+    "test": "tsx --test tests/*.test.ts",
+    "test:dist": "tsx --test tests-dist/*.test.ts",
+    "verify": "npm run typecheck && npm test && npm run build && npm run test:dist",
+    "audit:prod": "npm audit --omit=dev",
+    "pack:check": "npm pack --dry-run",
+    "release": "npm run verify && npm run audit:prod && npm run pack:check"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "node-alarm-dot-com": "^2.5.0",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.0.0",
+    "@modelcontextprotocol/ext-apps": "^1.7.5",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "@types/node": "^24.7.0",
+    "@types/node-fetch": "^2.6.13",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.0.4",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "esbuild": "^0.25.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+	"servers": {
+		"adt-security": {
+			"type": "stdio",
+			"command": "node",
+			"args": ["${workspaceFolder}/dist/main.js"],
+			"env": {
+				"ADT_DEMO_MODE": "true"
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist"
+  },
+  "include": ["src/server.ts", "src/types.ts", "src/adt-client.ts", "src/confirmation-store.ts", "src/audit-log.ts", "src/standalone-ui.ts", "src/operational-log.ts", "src/version.ts"]
+}
